@@ -1,6 +1,6 @@
 const express = require('express');
 const route = express.Router();
-const Data = require('../model/SimpleData');
+const SimpleData = require('../model/SimpleData');
 const axios = require('axios');
 
 const GITHUB_INFO = '/:userName'
@@ -8,7 +8,7 @@ let GET_USERNAME_URL = 'https://api.github.com/users';
 
 route.get(GITHUB_INFO, (req, res, next) => {
     let userName = req.params.userName;
-    let data = new Data();
+    let data = new SimpleData();
     axios.get(GET_USERNAME_URL + '/' + userName)
         .then(response => {
             data.setData = response.data;
